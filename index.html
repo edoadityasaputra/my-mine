@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slideshow dengan Transisi Berbeda</title>
+    <title>Slideshow Foto - Transisi Berbeda</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
@@ -53,389 +49,95 @@
             display: block;
         }
 
-        /* === TRANSISI BERBEDA UNTUK SETIAP SLIDE === */
-        
-        /* Slide 1 - Fade */
-        .slide-1.active {
-            animation: fadeIn 1s ease forwards;
-        }
-        .slide-1.exit {
-            animation: fadeOut 1s ease forwards;
-        }
-        
-        /* Slide 2 - Slide from Left */
-        .slide-2.active {
-            animation: slideLeft 1s ease forwards;
-        }
-        .slide-2.exit {
-            animation: slideRight 1s ease forwards;
-        }
-        
-        /* Slide 3 - Zoom In */
-        .slide-3.active {
-            animation: zoomIn 1s ease forwards;
-        }
-        .slide-3.exit {
-            animation: zoomOut 1s ease forwards;
-        }
-        
-        /* Slide 4 - Rotate & Scale */
-        .slide-4.active {
-            animation: rotateScale 1s ease forwards;
-        }
-        .slide-4.exit {
-            animation: rotateScaleOut 1s ease forwards;
-        }
-        
-        /* Slide 5 - Flip */
-        .slide-5.active {
-            animation: flipIn 1s ease forwards;
-        }
-        .slide-5.exit {
-            animation: flipOut 1s ease forwards;
-        }
-        
-        /* Slide 6 - Bounce */
-        .slide-6.active {
-            animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-        }
-        .slide-6.exit {
-            animation: bounceOut 1s ease forwards;
-        }
-        
-        /* Slide 7 - Blur */
-        .slide-7.active {
-            animation: blurIn 1s ease forwards;
-        }
-        .slide-7.exit {
-            animation: blurOut 1s ease forwards;
-        }
-        
-        /* Slide 8 - Slide from Top */
-        .slide-8.active {
-            animation: slideTop 1s ease forwards;
-        }
-        .slide-8.exit {
-            animation: slideBottom 1s ease forwards;
-        }
-        
-        /* Slide 9 - Glitch */
-        .slide-9.active {
-            animation: glitchIn 1s ease forwards;
-        }
-        .slide-9.exit {
-            animation: glitchOut 1s ease forwards;
-        }
-        
-        /* Slide 10 - Swing */
-        .slide-10.active {
-            animation: swingIn 1s ease forwards;
-        }
-        .slide-10.exit {
-            animation: swingOut 1s ease forwards;
-        }
-        
-        /* Slide 11 - 3D Rotate */
-        .slide-11.active {
-            animation: rotate3d 1s ease forwards;
-        }
-        .slide-11.exit {
-            animation: rotate3dOut 1s ease forwards;
-        }
-        
-        /* Slide 12 - Shutter */
-        .slide-12.active {
-            animation: shutterIn 1s ease forwards;
-        }
-        .slide-12.exit {
-            animation: shutterOut 1s ease forwards;
-        }
-        
-        /* Slide 13 - Elastic */
-        .slide-13.active {
-            animation: elasticIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-        }
-        .slide-13.exit {
-            animation: elasticOut 1s ease forwards;
-        }
-        
-        /* Slide 14 - Slide from Right */
-        .slide-14.active {
-            animation: slideRightIn 1s ease forwards;
-        }
-        .slide-14.exit {
-            animation: slideLeftOut 1s ease forwards;
-        }
-        
-        /* Slide 15 - Scale Up */
-        .slide-15.active {
-            animation: scaleUp 1s ease forwards;
-        }
-        .slide-15.exit {
-            animation: scaleDown 1s ease forwards;
-        }
-        
-        /* Slide 16 - Fold */
-        .slide-16.active {
-            animation: foldIn 1s ease forwards;
-        }
-        .slide-16.exit {
-            animation: foldOut 1s ease forwards;
-        }
-        
-        /* Slide 17 - Flash */
-        .slide-17.active {
-            animation: flashIn 1s ease forwards;
-        }
-        .slide-17.exit {
-            animation: flashOut 1s ease forwards;
-        }
-        
-        /* Slide 18 - Slide from Bottom */
-        .slide-18.active {
-            animation: slideBottomIn 1s ease forwards;
-        }
-        .slide-18.exit {
-            animation: slideTopOut 1s ease forwards;
-        }
-        
-        /* Slide 19 - Perspective */
-        .slide-19.active {
-            animation: perspectiveIn 1s ease forwards;
-        }
-        .slide-19.exit {
-            animation: perspectiveOut 1s ease forwards;
-        }
-        
-        /* Slide 20 - Wobble */
-        .slide-20.active {
-            animation: wobbleIn 1s ease forwards;
-        }
-        .slide-20.exit {
-            animation: wobbleOut 1s ease forwards;
-        }
-        
-        /* Slide 21 - Ripple */
-        .slide-21.active {
-            animation: rippleIn 1s ease forwards;
-        }
-        .slide-21.exit {
-            animation: rippleOut 1s ease forwards;
-        }
+        /* === SEMUA TRANSISI === */
+        .slide-1.active { animation: fadeIn 1s ease forwards; }
+        .slide-1.exit { animation: fadeOut 1s ease forwards; }
+        .slide-2.active { animation: slideLeft 1s ease forwards; }
+        .slide-2.exit { animation: slideRight 1s ease forwards; }
+        .slide-3.active { animation: zoomIn 1s ease forwards; }
+        .slide-3.exit { animation: zoomOut 1s ease forwards; }
+        .slide-4.active { animation: rotateScale 1s ease forwards; }
+        .slide-4.exit { animation: rotateScaleOut 1s ease forwards; }
+        .slide-5.active { animation: flipIn 1s ease forwards; }
+        .slide-5.exit { animation: flipOut 1s ease forwards; }
+        .slide-6.active { animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
+        .slide-6.exit { animation: bounceOut 1s ease forwards; }
+        .slide-7.active { animation: blurIn 1s ease forwards; }
+        .slide-7.exit { animation: blurOut 1s ease forwards; }
+        .slide-8.active { animation: slideTop 1s ease forwards; }
+        .slide-8.exit { animation: slideBottom 1s ease forwards; }
+        .slide-9.active { animation: glitchIn 1s ease forwards; }
+        .slide-9.exit { animation: glitchOut 1s ease forwards; }
+        .slide-10.active { animation: swingIn 1s ease forwards; }
+        .slide-10.exit { animation: swingOut 1s ease forwards; }
+        .slide-11.active { animation: rotate3d 1s ease forwards; }
+        .slide-11.exit { animation: rotate3dOut 1s ease forwards; }
+        .slide-12.active { animation: shutterIn 1s ease forwards; }
+        .slide-12.exit { animation: shutterOut 1s ease forwards; }
+        .slide-13.active { animation: elasticIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
+        .slide-13.exit { animation: elasticOut 1s ease forwards; }
+        .slide-14.active { animation: slideRightIn 1s ease forwards; }
+        .slide-14.exit { animation: slideLeftOut 1s ease forwards; }
+        .slide-15.active { animation: scaleUp 1s ease forwards; }
+        .slide-15.exit { animation: scaleDown 1s ease forwards; }
+        .slide-16.active { animation: foldIn 1s ease forwards; }
+        .slide-16.exit { animation: foldOut 1s ease forwards; }
+        .slide-17.active { animation: flashIn 1s ease forwards; }
+        .slide-17.exit { animation: flashOut 1s ease forwards; }
+        .slide-18.active { animation: slideBottomIn 1s ease forwards; }
+        .slide-18.exit { animation: slideTopOut 1s ease forwards; }
+        .slide-19.active { animation: perspectiveIn 1s ease forwards; }
+        .slide-19.exit { animation: perspectiveOut 1s ease forwards; }
+        .slide-20.active { animation: wobbleIn 1s ease forwards; }
+        .slide-20.exit { animation: wobbleOut 1s ease forwards; }
+        .slide-21.active { animation: rippleIn 1s ease forwards; }
+        .slide-21.exit { animation: rippleOut 1s ease forwards; }
 
-        /* === KEYFRAMES UNTUK SEMUA TRANSISI === */
+        /* KEYFRAMES */
+        @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+        @keyframes fadeOut { 0% { opacity: 1; } 100% { opacity: 0; } }
+        @keyframes slideLeft { 0% { transform: translateX(-100%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+        @keyframes slideRight { 0% { transform: translateX(0); opacity: 1; } 100% { transform: translateX(100%); opacity: 0; } }
+        @keyframes zoomIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes zoomOut { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
+        @keyframes rotateScale { 0% { transform: rotate(-180deg) scale(0.3); opacity: 0; } 100% { transform: rotate(0) scale(1); opacity: 1; } }
+        @keyframes rotateScaleOut { 0% { transform: rotate(0) scale(1); opacity: 1; } 100% { transform: rotate(180deg) scale(0.3); opacity: 0; } }
+        @keyframes flipIn { 0% { transform: perspective(600px) rotateY(-90deg); opacity: 0; } 100% { transform: perspective(600px) rotateY(0); opacity: 1; } }
+        @keyframes flipOut { 0% { transform: perspective(600px) rotateY(0); opacity: 1; } 100% { transform: perspective(600px) rotateY(90deg); opacity: 0; } }
+        @keyframes bounceIn { 0% { transform: scale(0.3); opacity: 0; } 50% { transform: scale(1.1); } 70% { transform: scale(0.9); } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes bounceOut { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.9); } 100% { transform: scale(0.3); opacity: 0; } }
+        @keyframes blurIn { 0% { filter: blur(20px); opacity: 0; } 100% { filter: blur(0); opacity: 1; } }
+        @keyframes blurOut { 0% { filter: blur(0); opacity: 1; } 100% { filter: blur(20px); opacity: 0; } }
+        @keyframes slideTop { 0% { transform: translateY(-100%); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+        @keyframes slideBottom { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(100%); opacity: 0; } }
+        @keyframes glitchIn { 0% { transform: translate(10px, -10px) scale(1.1); opacity: 0; filter: hue-rotate(90deg); } 20% { transform: translate(-10px, 10px); } 40% { transform: translate(5px, -5px); } 60% { transform: translate(-5px, 5px); } 100% { transform: translate(0, 0); opacity: 1; filter: hue-rotate(0); } }
+        @keyframes glitchOut { 0% { transform: translate(0, 0); opacity: 1; filter: hue-rotate(0); } 20% { transform: translate(-5px, 5px); } 40% { transform: translate(5px, -5px); } 100% { transform: translate(10px, -10px) scale(0.9); opacity: 0; filter: hue-rotate(-90deg); } }
+        @keyframes swingIn { 0% { transform: rotate(-30deg) scale(0.8); opacity: 0; transform-origin: top center; } 100% { transform: rotate(0) scale(1); opacity: 1; transform-origin: top center; } }
+        @keyframes swingOut { 0% { transform: rotate(0) scale(1); opacity: 1; transform-origin: top center; } 100% { transform: rotate(30deg) scale(0.8); opacity: 0; transform-origin: top center; } }
+        @keyframes rotate3d { 0% { transform: perspective(600px) rotateX(90deg) rotateY(90deg); opacity: 0; } 100% { transform: perspective(600px) rotateX(0) rotateY(0); opacity: 1; } }
+        @keyframes rotate3dOut { 0% { transform: perspective(600px) rotateX(0) rotateY(0); opacity: 1; } 100% { transform: perspective(600px) rotateX(-90deg) rotateY(-90deg); opacity: 0; } }
+        @keyframes shutterIn { 0% { transform: scaleX(0); opacity: 0; } 100% { transform: scaleX(1); opacity: 1; } }
+        @keyframes shutterOut { 0% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(0); opacity: 0; } }
+        @keyframes elasticIn { 0% { transform: scale(0.3); opacity: 0; } 40% { transform: scale(1.2); } 60% { transform: scale(0.9); } 80% { transform: scale(1.05); } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes elasticOut { 0% { transform: scale(1); opacity: 1; } 40% { transform: scale(1.1); } 100% { transform: scale(0.3); opacity: 0; } }
+        @keyframes slideRightIn { 0% { transform: translateX(100%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+        @keyframes slideLeftOut { 0% { transform: translateX(0); opacity: 1; } 100% { transform: translateX(-100%); opacity: 0; } }
+        @keyframes scaleUp { 0% { transform: scale(0) rotate(10deg); opacity: 0; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
+        @keyframes scaleDown { 0% { transform: scale(1) rotate(0); opacity: 1; } 100% { transform: scale(0) rotate(-10deg); opacity: 0; } }
+        @keyframes foldIn { 0% { transform: perspective(600px) rotateY(90deg) scale(0.8); opacity: 0; } 100% { transform: perspective(600px) rotateY(0) scale(1); opacity: 1; } }
+        @keyframes foldOut { 0% { transform: perspective(600px) rotateY(0) scale(1); opacity: 1; } 100% { transform: perspective(600px) rotateY(-90deg) scale(0.8); opacity: 0; } }
+        @keyframes flashIn { 0% { opacity: 0; filter: brightness(3); } 50% { opacity: 0.5; filter: brightness(1.5); } 100% { opacity: 1; filter: brightness(1); } }
+        @keyframes flashOut { 0% { opacity: 1; filter: brightness(1); } 50% { opacity: 0.5; filter: brightness(2); } 100% { opacity: 0; filter: brightness(3); } }
+        @keyframes slideBottomIn { 0% { transform: translateY(100%); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+        @keyframes slideTopOut { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-100%); opacity: 0; } }
+        @keyframes perspectiveIn { 0% { transform: perspective(600px) translateZ(-300px) rotateX(20deg); opacity: 0; } 100% { transform: perspective(600px) translateZ(0) rotateX(0); opacity: 1; } }
+        @keyframes perspectiveOut { 0% { transform: perspective(600px) translateZ(0) rotateX(0); opacity: 1; } 100% { transform: perspective(600px) translateZ(-300px) rotateX(-20deg); opacity: 0; } }
+        @keyframes wobbleIn { 0% { transform: translateX(-50%) rotate(-10deg); opacity: 0; } 25% { transform: translateX(30%) rotate(5deg); } 50% { transform: translateX(-20%) rotate(-3deg); } 75% { transform: translateX(10%) rotate(2deg); } 100% { transform: translateX(0) rotate(0); opacity: 1; } }
+        @keyframes wobbleOut { 0% { transform: translateX(0) rotate(0); opacity: 1; } 25% { transform: translateX(20%) rotate(5deg); } 50% { transform: translateX(-30%) rotate(-5deg); } 100% { transform: translateX(50%) rotate(10deg); opacity: 0; } }
+        @keyframes rippleIn { 0% { transform: scale(0.5); opacity: 0; filter: brightness(2); } 50% { transform: scale(1.1); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; filter: brightness(1); } }
+        @keyframes rippleOut { 0% { transform: scale(1); opacity: 1; filter: brightness(1); } 50% { transform: scale(1.2); opacity: 0.5; filter: brightness(1.5); } 100% { transform: scale(1.5); opacity: 0; filter: brightness(2); } }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        @keyframes fadeOut {
-            0% { opacity: 1; }
-            100% { opacity: 0; }
-        }
-
-        @keyframes slideLeft {
-            0% { transform: translateX(-100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideRight {
-            0% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(100%); opacity: 0; }
-        }
-
-        @keyframes zoomIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes zoomOut {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-
-        @keyframes rotateScale {
-            0% { transform: rotate(-180deg) scale(0.3); opacity: 0; }
-            100% { transform: rotate(0) scale(1); opacity: 1; }
-        }
-        @keyframes rotateScaleOut {
-            0% { transform: rotate(0) scale(1); opacity: 1; }
-            100% { transform: rotate(180deg) scale(0.3); opacity: 0; }
-        }
-
-        @keyframes flipIn {
-            0% { transform: perspective(600px) rotateY(-90deg); opacity: 0; }
-            100% { transform: perspective(600px) rotateY(0); opacity: 1; }
-        }
-        @keyframes flipOut {
-            0% { transform: perspective(600px) rotateY(0); opacity: 1; }
-            100% { transform: perspective(600px) rotateY(90deg); opacity: 0; }
-        }
-
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.1); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes bounceOut {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(0.9); }
-            100% { transform: scale(0.3); opacity: 0; }
-        }
-
-        @keyframes blurIn {
-            0% { filter: blur(20px); opacity: 0; }
-            100% { filter: blur(0); opacity: 1; }
-        }
-        @keyframes blurOut {
-            0% { filter: blur(0); opacity: 1; }
-            100% { filter: blur(20px); opacity: 0; }
-        }
-
-        @keyframes slideTop {
-            0% { transform: translateY(-100%); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes slideBottom {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(100%); opacity: 0; }
-        }
-
-        @keyframes glitchIn {
-            0% { transform: translate(10px, -10px) scale(1.1); opacity: 0; filter: hue-rotate(90deg); }
-            20% { transform: translate(-10px, 10px); }
-            40% { transform: translate(5px, -5px); }
-            60% { transform: translate(-5px, 5px); }
-            100% { transform: translate(0, 0); opacity: 1; filter: hue-rotate(0); }
-        }
-        @keyframes glitchOut {
-            0% { transform: translate(0, 0); opacity: 1; filter: hue-rotate(0); }
-            20% { transform: translate(-5px, 5px); }
-            40% { transform: translate(5px, -5px); }
-            100% { transform: translate(10px, -10px) scale(0.9); opacity: 0; filter: hue-rotate(-90deg); }
-        }
-
-        @keyframes swingIn {
-            0% { transform: rotate(-30deg) scale(0.8); opacity: 0; transform-origin: top center; }
-            100% { transform: rotate(0) scale(1); opacity: 1; transform-origin: top center; }
-        }
-        @keyframes swingOut {
-            0% { transform: rotate(0) scale(1); opacity: 1; transform-origin: top center; }
-            100% { transform: rotate(30deg) scale(0.8); opacity: 0; transform-origin: top center; }
-        }
-
-        @keyframes rotate3d {
-            0% { transform: perspective(600px) rotateX(90deg) rotateY(90deg); opacity: 0; }
-            100% { transform: perspective(600px) rotateX(0) rotateY(0); opacity: 1; }
-        }
-        @keyframes rotate3dOut {
-            0% { transform: perspective(600px) rotateX(0) rotateY(0); opacity: 1; }
-            100% { transform: perspective(600px) rotateX(-90deg) rotateY(-90deg); opacity: 0; }
-        }
-
-        @keyframes shutterIn {
-            0% { transform: scaleX(0); opacity: 0; }
-            100% { transform: scaleX(1); opacity: 1; }
-        }
-        @keyframes shutterOut {
-            0% { transform: scaleX(1); opacity: 1; }
-            100% { transform: scaleX(0); opacity: 0; }
-        }
-
-        @keyframes elasticIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            40% { transform: scale(1.2); }
-            60% { transform: scale(0.9); }
-            80% { transform: scale(1.05); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes elasticOut {
-            0% { transform: scale(1); opacity: 1; }
-            40% { transform: scale(1.1); }
-            100% { transform: scale(0.3); opacity: 0; }
-        }
-
-        @keyframes slideRightIn {
-            0% { transform: translateX(100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideLeftOut {
-            0% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(-100%); opacity: 0; }
-        }
-
-        @keyframes scaleUp {
-            0% { transform: scale(0) rotate(10deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0); opacity: 1; }
-        }
-        @keyframes scaleDown {
-            0% { transform: scale(1) rotate(0); opacity: 1; }
-            100% { transform: scale(0) rotate(-10deg); opacity: 0; }
-        }
-
-        @keyframes foldIn {
-            0% { transform: perspective(600px) rotateY(90deg) scale(0.8); opacity: 0; }
-            100% { transform: perspective(600px) rotateY(0) scale(1); opacity: 1; }
-        }
-        @keyframes foldOut {
-            0% { transform: perspective(600px) rotateY(0) scale(1); opacity: 1; }
-            100% { transform: perspective(600px) rotateY(-90deg) scale(0.8); opacity: 0; }
-        }
-
-        @keyframes flashIn {
-            0% { opacity: 0; filter: brightness(3); }
-            50% { opacity: 0.5; filter: brightness(1.5); }
-            100% { opacity: 1; filter: brightness(1); }
-        }
-        @keyframes flashOut {
-            0% { opacity: 1; filter: brightness(1); }
-            50% { opacity: 0.5; filter: brightness(2); }
-            100% { opacity: 0; filter: brightness(3); }
-        }
-
-        @keyframes slideBottomIn {
-            0% { transform: translateY(100%); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes slideTopOut {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100%); opacity: 0; }
-        }
-
-        @keyframes perspectiveIn {
-            0% { transform: perspective(600px) translateZ(-300px) rotateX(20deg); opacity: 0; }
-            100% { transform: perspective(600px) translateZ(0) rotateX(0); opacity: 1; }
-        }
-        @keyframes perspectiveOut {
-            0% { transform: perspective(600px) translateZ(0) rotateX(0); opacity: 1; }
-            100% { transform: perspective(600px) translateZ(-300px) rotateX(-20deg); opacity: 0; }
-        }
-
-        @keyframes wobbleIn {
-            0% { transform: translateX(-50%) rotate(-10deg); opacity: 0; }
-            25% { transform: translateX(30%) rotate(5deg); }
-            50% { transform: translateX(-20%) rotate(-3deg); }
-            75% { transform: translateX(10%) rotate(2deg); }
-            100% { transform: translateX(0) rotate(0); opacity: 1; }
-        }
-        @keyframes wobbleOut {
-            0% { transform: translateX(0) rotate(0); opacity: 1; }
-            25% { transform: translateX(20%) rotate(5deg); }
-            50% { transform: translateX(-30%) rotate(-5deg); }
-            100% { transform: translateX(50%) rotate(10deg); opacity: 0; }
-        }
-
-        @keyframes rippleIn {
-            0% { transform: scale(0.5); opacity: 0; filter: brightness(2); }
-            50% { transform: scale(1.1); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; filter: brightness(1); }
-        }
-        @keyframes rippleOut {
-            0% { transform: scale(1); opacity: 1; filter: brightness(1); }
-            50% { transform: scale(1.2); opacity: 0.5; filter: brightness(1.5); }
-            100% { transform: scale(1.5); opacity: 0; filter: brightness(2); }
-        }
-
-        /* Navigasi */
+        /* KONTROL */
         .controls {
             position: absolute;
             bottom: 30px;
@@ -470,14 +172,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .btn:active {
-            transform: scale(0.95);
-        }
-
-        .btn-prev, .btn-next {
-            padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.2);
-        }
+        .btn:active { transform: scale(0.95); }
 
         .indicator {
             position: absolute;
@@ -513,36 +208,14 @@
             opacity: 0.8;
         }
 
-        /* Auto play toggle */
-        .auto-btn {
-            background: rgba(255, 50, 50, 0.3);
-            border-color: rgba(255, 50, 50, 0.3);
-        }
-        .auto-btn.active {
-            background: rgba(50, 255, 50, 0.3);
-            border-color: rgba(50, 255, 50, 0.3);
-        }
+        .auto-btn { background: rgba(255, 50, 50, 0.3); border-color: rgba(255, 50, 50, 0.3); }
+        .auto-btn.active { background: rgba(50, 255, 50, 0.3); border-color: rgba(50, 255, 50, 0.3); }
 
         @media (max-width: 600px) {
-            .controls {
-                bottom: 15px;
-                gap: 10px;
-            }
-            .btn {
-                padding: 8px 16px;
-                font-size: 12px;
-            }
-            .indicator {
-                top: 10px;
-                right: 15px;
-                font-size: 14px;
-                padding: 4px 14px;
-            }
-            .transition-name {
-                bottom: 70px;
-                font-size: 11px;
-                padding: 4px 14px;
-            }
+            .controls { bottom: 15px; gap: 10px; }
+            .btn { padding: 8px 16px; font-size: 12px; }
+            .indicator { top: 10px; right: 15px; font-size: 14px; padding: 4px 14px; }
+            .transition-name { bottom: 70px; font-size: 11px; padding: 4px 14px; }
         }
     </style>
 </head>
@@ -551,17 +224,19 @@
         <div class="indicator" id="indicator">1 / 21</div>
         <div class="transition-name" id="transitionName">Fade</div>
         
-        <div class="gallery" id="gallery"></div>
+        <div id="gallery"></div>
         
         <div class="controls">
-            <button class="btn btn-prev" id="prevBtn">◀ Sebelum</button>
+            <button class="btn" id="prevBtn">◀ Sebelum</button>
             <button class="btn auto-btn" id="autoBtn">▶ Auto</button>
-            <button class="btn btn-next" id="nextBtn">Selanjutnya ▶</button>
+            <button class="btn" id="nextBtn">Selanjutnya ▶</button>
         </div>
     </div>
 
     <script>
-        // Daftar ID file Google Drive
+        // ============================================================
+        // 📸 DAFTAR FILE ID GOOGLE DRIVE (sudah saya ekstrak dari link Anda)
+        // ============================================================
         const fileIds = [
             '1gPntOpgmZk5i3Jv9YrjScPTbFJ4jVDbZ',
             '1zDE7dFXBy6LHX5igQyeVlwnhfXYlj_-M',
@@ -595,7 +270,11 @@
             'Ripple'
         ];
 
+        // ============================================================
+        // 🔑 FUNGSI MEMBUAT LINK DIRECT GOOGLE DRIVE
+        // ============================================================
         function getDirectLink(fileId) {
+            // Format yang benar untuk menampilkan gambar di <img>
             return `https://drive.google.com/uc?export=view&id=${fileId}`;
         }
 
@@ -616,8 +295,9 @@
             img.alt = `Foto ${index + 1}`;
             img.loading = 'lazy';
             
-            img.onerror = () => {
-                img.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450"%3E%3Crect width="800" height="450" fill="%2324243e"%3E%3C/rect%3E%3Ctext x="350" y="230" font-family="Arial" font-size="30" fill="%23fff"%3E📷 Gagal memuat%3C/text%3E%3C/svg%3E';
+            // Jika gagal muat, tampilkan pesan
+            img.onerror = function() {
+                this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450"%3E%3Crect width="800" height="450" fill="%2324243e"%3E%3C/rect%3E%3Ctext x="300" y="230" font-family="Arial" font-size="28" fill="%23ff6b6b"%3E⚠️ Gagal memuat foto%3C/text%3E%3Ctext x="300" y="270" font-family="Arial" font-size="16" fill="%23999"%3EPeriksa izin akses Google Drive%3C/text%3E%3C/svg%3E';
             };
             
             slide.appendChild(img);
@@ -643,35 +323,28 @@
             const currentSlide = slides[currentIndex];
             const nextSlide = slides[index];
 
-            // Hapus semua kelas animasi
             currentSlide.classList.remove('active');
             currentSlide.classList.remove('exit');
             nextSlide.classList.remove('active');
             nextSlide.classList.remove('exit');
 
-            // Trigger reflow
             void currentSlide.offsetWidth;
 
-            // Tambahkan kelas exit untuk slide saat ini
             currentSlide.classList.add('exit');
 
-            // Tunggu animasi exit selesai
             setTimeout(() => {
                 currentSlide.classList.remove('exit');
                 currentSlide.style.opacity = '0';
                 currentSlide.style.zIndex = '1';
             }, 1000);
 
-            // Tampilkan slide berikutnya
             setTimeout(() => {
                 nextSlide.style.opacity = '0';
                 nextSlide.style.zIndex = '2';
                 nextSlide.classList.add('active');
 
-                // Trigger reflow
                 void nextSlide.offsetWidth;
 
-                // Hapus opacity inline setelah animasi selesai
                 setTimeout(() => {
                     nextSlide.style.opacity = '';
                     currentSlide.style.opacity = '';
@@ -708,7 +381,6 @@
             }
         }
 
-        // Event listeners
         prevBtn.addEventListener('click', () => {
             if (isAutoPlay) toggleAutoPlay();
             prevSlide();
@@ -721,7 +393,6 @@
 
         autoBtn.addEventListener('click', toggleAutoPlay);
 
-        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') {
                 if (isAutoPlay) toggleAutoPlay();
@@ -738,7 +409,6 @@
         // Inisialisasi
         updateIndicator();
 
-        // Atur opacity awal
         slides.forEach((slide, i) => {
             if (i === 0) {
                 slide.style.opacity = '';
@@ -748,6 +418,10 @@
                 slide.style.zIndex = '1';
             }
         });
+
+        console.log('✅ Slideshow siap!');
+        console.log('📸 Total foto:', slides.length);
+        console.log('🔗 Contoh link gambar:', getDirectLink(fileIds[0]));
     </script>
 </body>
 </html>
