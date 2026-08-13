@@ -192,14 +192,14 @@
         }
 
         .controls .btn-auto {
-            background: rgba(255, 50, 50, 0.2);
-            border-color: rgba(255, 50, 50, 0.15);
+            background: rgba(50, 255, 50, 0.2);
+            border-color: rgba(50, 255, 50, 0.15);
             font-size: 20px;
         }
 
-        .controls .btn-auto.active {
-            background: rgba(50, 255, 50, 0.2);
-            border-color: rgba(50, 255, 50, 0.15);
+        .controls .btn-auto.paused {
+            background: rgba(255, 50, 50, 0.2);
+            border-color: rgba(255, 50, 50, 0.15);
         }
 
         /* INDICATOR & TRANSISI NAME */
@@ -313,7 +313,7 @@
     <!-- KONTROL BAWAH - HANYA SIMBOL -->
     <div class="controls">
         <button class="btn btn-prev" id="prevBtn">◀</button>
-        <button class="btn btn-auto" id="autoBtn">▶</button>
+        <button class="btn btn-auto" id="autoBtn">⏸</button>
         <button class="btn btn-next" id="nextBtn">▶</button>
     </div>
 
@@ -368,7 +368,7 @@
         let currentIndex = 0;
         let isTransitioning = false;
         let autoPlayInterval = null;
-        let isAutoPlay = false;
+        let isAutoPlay = true; // ⭐ AUTO PLAY AKTIF SAAT AWAL
 
         // Buat slide
         fileIds.forEach((id, index) => {
@@ -471,11 +471,11 @@
             isAutoPlay = !isAutoPlay;
             if (isAutoPlay) {
                 autoBtn.textContent = '⏸';
-                autoBtn.classList.add('active');
-                autoPlayInterval = setInterval(nextSlide, 4000);
+                autoBtn.classList.remove('paused');
+                autoPlayInterval = setInterval(nextSlide, 3000); // ⭐ 3 DETIK (LEBIH CEPAT)
             } else {
                 autoBtn.textContent = '▶';
-                autoBtn.classList.remove('active');
+                autoBtn.classList.add('paused');
                 clearInterval(autoPlayInterval);
                 autoPlayInterval = null;
             }
@@ -530,6 +530,19 @@
             }
         });
 
+        // ============================================================
+        // ⭐ AUTO PLAY LANGSUNG JALAN SAAT WEBSITE DIBUKA
+        // ============================================================
+        function startAutoPlay() {
+            // Set tombol ke mode play
+            autoBtn.textContent = '⏸';
+            autoBtn.classList.remove('paused');
+            // Mulai interval dengan kecepatan 3 detik
+            autoPlayInterval = setInterval(nextSlide, 3000);
+            isAutoPlay = true;
+            console.log('▶ Auto Play dimulai! (3 detik)');
+        }
+
         // INIT
         updateIndicator();
 
@@ -543,7 +556,10 @@
             }
         });
 
-        console.log('✅ Slideshow siap!');
+        // ⭐ MULAI AUTO PLAY OTOMATIS
+        startAutoPlay();
+
+        console.log('✅ Slideshow siap! Auto Play aktif!');
         console.log('📸 Total foto:', slides.length);
     </script>
 </body>
