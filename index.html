@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slideshow Foto - Transisi Berbeda</title>
+    <title>Mine <3</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -17,14 +17,40 @@
             padding: 20px;
         }
 
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        h1 span {
+            background: linear-gradient(45deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .slideshow-container {
             position: relative;
-            width: 90%;
-            max-width: 900px;
+            width: 100%;
             aspect-ratio: 16/9;
-            border-radius: 25px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
             background: #1a1a2e;
         }
 
@@ -49,7 +75,7 @@
             display: block;
         }
 
-        /* === SEMUA TRANSISI === */
+        /* SEMUA TRANSISI */
         .slide-1.active { animation: fadeIn 1s ease forwards; }
         .slide-1.exit { animation: fadeOut 1s ease forwards; }
         .slide-2.active { animation: slideLeft 1s ease forwards; }
@@ -93,7 +119,6 @@
         .slide-21.active { animation: rippleIn 1s ease forwards; }
         .slide-21.exit { animation: rippleOut 1s ease forwards; }
 
-        /* KEYFRAMES */
         @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
         @keyframes fadeOut { 0% { opacity: 1; } 100% { opacity: 0; } }
         @keyframes slideLeft { 0% { transform: translateX(-100%); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
@@ -140,35 +165,35 @@
         /* KONTROL */
         .controls {
             position: absolute;
-            bottom: 30px;
+            bottom: 25px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 15px;
+            gap: 12px;
             z-index: 10;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 10px 25px;
             border: none;
             border-radius: 50px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
             color: white;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            letter-spacing: 1px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
         .btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px) scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px) scale(1.05);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         }
 
@@ -176,14 +201,14 @@
 
         .indicator {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: 15px;
+            right: 20px;
             color: white;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             z-index: 10;
             background: rgba(0, 0, 0, 0.5);
-            padding: 8px 20px;
+            padding: 6px 18px;
             border-radius: 30px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -191,15 +216,15 @@
 
         .transition-name {
             position: absolute;
-            bottom: 100px;
+            bottom: 85px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             z-index: 10;
             background: rgba(0, 0, 0, 0.6);
-            padding: 6px 20px;
+            padding: 5px 18px;
             border-radius: 20px;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -208,34 +233,54 @@
             opacity: 0.8;
         }
 
-        .auto-btn { background: rgba(255, 50, 50, 0.3); border-color: rgba(255, 50, 50, 0.3); }
-        .auto-btn.active { background: rgba(50, 255, 50, 0.3); border-color: rgba(50, 255, 50, 0.3); }
+        .auto-btn { background: rgba(255, 50, 50, 0.25); border-color: rgba(255, 50, 50, 0.2); }
+        .auto-btn.active { background: rgba(50, 255, 50, 0.25); border-color: rgba(50, 255, 50, 0.2); }
+
+        .slide.loading img { opacity: 0.3; }
+        .slide.loading::after {
+            content: '⏳ Memuat...';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 25px;
+            border-radius: 10px;
+        }
 
         @media (max-width: 600px) {
-            .controls { bottom: 15px; gap: 10px; }
-            .btn { padding: 8px 16px; font-size: 12px; }
-            .indicator { top: 10px; right: 15px; font-size: 14px; padding: 4px 14px; }
-            .transition-name { bottom: 70px; font-size: 11px; padding: 4px 14px; }
+            .container { padding: 10px; }
+            h1 { font-size: 20px; }
+            .controls { bottom: 15px; gap: 8px; }
+            .btn { padding: 6px 14px; font-size: 11px; }
+            .indicator { top: 10px; right: 12px; font-size: 12px; padding: 4px 12px; }
+            .transition-name { bottom: 65px; font-size: 10px; padding: 3px 12px; }
         }
     </style>
 </head>
 <body>
-    <div class="slideshow-container">
-        <div class="indicator" id="indicator">1 / 21</div>
-        <div class="transition-name" id="transitionName">Fade</div>
-        
-        <div id="gallery"></div>
-        
-        <div class="controls">
-            <button class="btn" id="prevBtn">◀ Sebelum</button>
-            <button class="btn auto-btn" id="autoBtn">▶ Auto</button>
-            <button class="btn" id="nextBtn">Selanjutnya ▶</button>
+    <div class="container">
+        <h1>📸 <span>Galeri Slideshow</span> · 21 Transisi</h1>
+        <div class="slideshow-container">
+            <div class="indicator" id="indicator">1 / 21</div>
+            <div class="transition-name" id="transitionName">Fade</div>
+            
+            <div id="gallery"></div>
+            
+            <div class="controls">
+                <button class="btn" id="prevBtn">◀ Sebelum</button>
+                <button class="btn auto-btn" id="autoBtn">▶ Auto</button>
+                <button class="btn" id="nextBtn">Selanjutnya ▶</button>
+            </div>
         </div>
     </div>
 
     <script>
         // ============================================================
-        // 📸 DAFTAR FILE ID GOOGLE DRIVE (sudah saya ekstrak dari link Anda)
+        // 📸 DAFTAR FILE ID GOOGLE DRIVE
         // ============================================================
         const fileIds = [
             '1gPntOpgmZk5i3Jv9YrjScPTbFJ4jVDbZ',
@@ -261,7 +306,6 @@
             '11AuaU-fvsgQDqLkhosBB-T1xzw3TBWGf'
         ];
 
-        // Nama transisi untuk setiap slide
         const transitionNames = [
             'Fade', 'Slide Left', 'Zoom In', 'Rotate & Scale', 'Flip',
             'Bounce', 'Blur', 'Slide Top', 'Glitch', 'Swing',
@@ -271,11 +315,19 @@
         ];
 
         // ============================================================
-        // 🔑 FUNGSI MEMBUAT LINK DIRECT GOOGLE DRIVE
+        // 🔑 SOLUSI 1: Google Drive dengan parameter tambahan
         // ============================================================
         function getDirectLink(fileId) {
-            // Format yang benar untuk menampilkan gambar di <img>
-            return `https://drive.google.com/uc?export=view&id=${fileId}`;
+            // Tambahkan parameter untuk menghindari blokir
+            return `https://drive.google.com/uc?export=view&id=${fileId}&v=${Date.now()}`;
+        }
+
+        // ============================================================
+        // 🔑 SOLUSI 2: Gunakan proxy jika Google Drive tetap memblokir
+        // ============================================================
+        function getProxyLink(fileId) {
+            // Menggunakan layanan proxy gratis untuk Google Drive
+            return `https://images.weserv.nl/?url=https://drive.google.com/uc?export=view&id=${fileId}`;
         }
 
         const gallery = document.getElementById('gallery');
@@ -284,20 +336,41 @@
         let autoPlayInterval = null;
         let isAutoPlay = false;
 
-        // Buat elemen slide
+        // Buat elemen slide dengan 2 pilihan link
         fileIds.forEach((id, index) => {
             const slide = document.createElement('div');
-            slide.className = `slide slide-${index + 1}`;
+            slide.className = `slide slide-${index + 1} loading`;
             if (index === 0) slide.classList.add('active');
             
             const img = document.createElement('img');
-            img.src = getDirectLink(id);
+            
+            // Coba langsung dulu, jika gagal pakai proxy
+            const directUrl = getDirectLink(id);
+            const proxyUrl = getProxyLink(id);
+            
+            img.src = directUrl;
             img.alt = `Foto ${index + 1}`;
             img.loading = 'lazy';
             
-            // Jika gagal muat, tampilkan pesan
+            // Jika gagal dengan direct, coba pakai proxy
+            let retryCount = 0;
             img.onerror = function() {
-                this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450"%3E%3Crect width="800" height="450" fill="%2324243e"%3E%3C/rect%3E%3Ctext x="300" y="230" font-family="Arial" font-size="28" fill="%23ff6b6b"%3E⚠️ Gagal memuat foto%3C/text%3E%3Ctext x="300" y="270" font-family="Arial" font-size="16" fill="%23999"%3EPeriksa izin akses Google Drive%3C/text%3E%3C/svg%3E';
+                retryCount++;
+                if (retryCount === 1) {
+                    // Coba pakai proxy
+                    this.src = proxyUrl;
+                } else if (retryCount === 2) {
+                    // Coba pakai Google Drive thumbnail
+                    this.src = `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+                } else {
+                    // Gagal total, tampilkan pesan
+                    slide.classList.remove('loading');
+                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450"%3E%3Crect width="800" height="450" fill="%2324243e"%3E%3C/rect%3E%3Ctext x="250" y="210" font-family="Arial" font-size="28" fill="%23ff6b6b"%3E⚠️ Gagal memuat foto%3C/text%3E%3Ctext x="250" y="250" font-family="Arial" font-size="16" fill="%23999"%3EPeriksa izin akses Google Drive%3C/text%3E%3Ctext x="250" y="280" font-family="Arial" font-size="13" fill="%23666"%3EID: ' + id.substring(0, 10) + '...%3C/text%3E%3C/svg%3E';
+                }
+            };
+            
+            img.onload = function() {
+                slide.classList.remove('loading');
             };
             
             slide.appendChild(img);
@@ -406,7 +479,6 @@
             }
         });
 
-        // Inisialisasi
         updateIndicator();
 
         slides.forEach((slide, i) => {
@@ -421,7 +493,8 @@
 
         console.log('✅ Slideshow siap!');
         console.log('📸 Total foto:', slides.length);
-        console.log('🔗 Contoh link gambar:', getDirectLink(fileIds[0]));
+        console.log('🔗 Mencoba 3 metode link untuk setiap foto...');
+        console.log('💡 Jika masih gagal, upload foto ke ImgBB dan ganti linknya');
     </script>
 </body>
 </html>
