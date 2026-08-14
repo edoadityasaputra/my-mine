@@ -139,7 +139,65 @@
         @keyframes rippleOut { 0% { transform: scale(1); opacity: 1; filter: brightness(1); } 50% { transform: scale(1.2); opacity: 0.5; filter: brightness(1.5); } 100% { transform: scale(1.5); opacity: 0; filter: brightness(2); } }
 
         /* ============================================ */
-        /* 🎮 KONTROL DI POJOK BAWAH - HANYA SIMBOL */
+        /* 🎵 SOUNDCLOUD PLAYER - MINI DI POJOK KANAN ATAS */
+        /* ============================================ */
+        .music-player {
+            position: fixed;
+            top: 70px;
+            right: 15px;
+            z-index: 100;
+            width: 280px;
+            max-width: 85vw;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 10px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .music-player iframe {
+            width: 100%;
+            height: 166px;
+            border: none;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .music-player .player-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .music-player .player-label span {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .music-player .toggle-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 0 5px;
+            transition: color 0.3s ease;
+        }
+
+        .music-player .toggle-btn:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ============================================ */
+        /* 🎮 KONTROL SLIDESHOW DI POJOK BAWAH */
         /* ============================================ */
         .controls {
             position: fixed;
@@ -202,7 +260,7 @@
             border-color: rgba(255, 50, 50, 0.15);
         }
 
-        /* INDICATOR & TRANSISI NAME */
+        /* INDICATOR */
         .indicator {
             position: fixed;
             top: 20px;
@@ -261,6 +319,15 @@
 
         /* RESPONSIVE */
         @media (max-width: 600px) {
+            .music-player {
+                top: 60px;
+                right: 10px;
+                width: 220px;
+                padding: 8px 10px;
+            }
+            .music-player iframe {
+                height: 140px;
+            }
             .controls {
                 bottom: 25px;
                 gap: 20px;
@@ -286,6 +353,15 @@
         }
 
         @media (max-width: 400px) {
+            .music-player {
+                top: 55px;
+                right: 8px;
+                width: 180px;
+                padding: 6px 8px;
+            }
+            .music-player iframe {
+                height: 120px;
+            }
             .controls {
                 bottom: 20px;
                 gap: 15px;
@@ -310,7 +386,26 @@
     <div class="indicator" id="indicator">1 / 21</div>
     <div class="transition-name" id="transitionName">Fade</div>
 
-    <!-- KONTROL BAWAH - HANYA SIMBOL -->
+    <!-- ============================================ -->
+    <!-- 🎵 SOUNDCLOUD PLAYER - POJOK KANAN ATAS -->
+    <!-- ============================================ -->
+    <div class="music-player" id="musicPlayer">
+        <div class="player-label">
+            <span>🎵 Now Playing</span>
+            <button class="toggle-btn" id="toggleMusicBtn">−</button>
+        </div>
+        <iframe 
+            id="soundcloudIframe"
+            width="100%" 
+            height="166" 
+            scrolling="no" 
+            frameborder="no" 
+            allow="autoplay; encrypted-media" 
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2352937985&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+        </iframe>
+    </div>
+
+    <!-- KONTROL BAWAH -->
     <div class="controls">
         <button class="btn btn-prev" id="prevBtn">◀</button>
         <button class="btn btn-auto" id="autoBtn">⏸</button>
@@ -368,7 +463,7 @@
         let currentIndex = 0;
         let isTransitioning = false;
         let autoPlayInterval = null;
-        let isAutoPlay = true; // ⭐ AUTO PLAY AKTIF SAAT AWAL
+        let isAutoPlay = true;
 
         // Buat slide
         fileIds.forEach((id, index) => {
@@ -411,6 +506,27 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const autoBtn = document.getElementById('autoBtn');
+
+        // ============================================================
+        // 🎵 MUSIC PLAYER CONTROLS
+        // ============================================================
+        const musicPlayer = document.getElementById('musicPlayer');
+        const soundcloudIframe = document.getElementById('soundcloudIframe');
+        const toggleMusicBtn = document.getElementById('toggleMusicBtn');
+        let isMusicVisible = true;
+
+        toggleMusicBtn.addEventListener('click', () => {
+            isMusicVisible = !isMusicVisible;
+            if (isMusicVisible) {
+                musicPlayer.style.transform = 'translateX(0)';
+                musicPlayer.style.opacity = '1';
+                toggleMusicBtn.textContent = '−';
+            } else {
+                musicPlayer.style.transform = 'translateX(120%)';
+                musicPlayer.style.opacity = '0';
+                toggleMusicBtn.textContent = '+';
+            }
+        });
 
         function updateIndicator() {
             indicator.textContent = `${currentIndex + 1} / ${slides.length}`;
@@ -472,7 +588,7 @@
             if (isAutoPlay) {
                 autoBtn.textContent = '⏸';
                 autoBtn.classList.remove('paused');
-                autoPlayInterval = setInterval(nextSlide, 3000); // ⭐ 3 DETIK (LEBIH CEPAT)
+                autoPlayInterval = setInterval(nextSlide, 3000);
             } else {
                 autoBtn.textContent = '▶';
                 autoBtn.classList.add('paused');
@@ -505,6 +621,8 @@
             } else if (e.key === ' ') {
                 e.preventDefault();
                 toggleAutoPlay();
+            } else if (e.key === 'm' || e.key === 'M') {
+                toggleMusicBtn.click();
             }
         });
 
@@ -534,10 +652,8 @@
         // ⭐ AUTO PLAY LANGSUNG JALAN SAAT WEBSITE DIBUKA
         // ============================================================
         function startAutoPlay() {
-            // Set tombol ke mode play
             autoBtn.textContent = '⏸';
             autoBtn.classList.remove('paused');
-            // Mulai interval dengan kecepatan 3 detik
             autoPlayInterval = setInterval(nextSlide, 3000);
             isAutoPlay = true;
             console.log('▶ Auto Play dimulai! (3 detik)');
@@ -556,11 +672,12 @@
             }
         });
 
-        // ⭐ MULAI AUTO PLAY OTOMATIS
         startAutoPlay();
 
         console.log('✅ Slideshow siap! Auto Play aktif!');
         console.log('📸 Total foto:', slides.length);
+        console.log('🎵 SoundCloud player siap!');
+        console.log('💡 Tekan "m" untuk sembunyikan/tampilkan musik');
     </script>
 </body>
 </html>
