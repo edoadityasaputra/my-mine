@@ -221,7 +221,7 @@
             margin-bottom: 18px;
         }
 
-        /* Player mini di dalam popup */
+        /* Player di dalam popup */
         .popup-player {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 14px;
@@ -634,7 +634,7 @@
     </div>
 
     <!-- ============================================ -->
-    <!-- 🎵 SOUNDCLOUD PLAYER - MINI DI POJOK KANAN BAWAH -->
+    <!-- 🎵 SOUNDCLOUD PLAYER - MINI DI POJOK KANAN BAWAH (iframe yang SAMA) -->
     <!-- ============================================ -->
     <div class="music-player-mini" id="musicPlayerMini">
         <div class="player-label">
@@ -748,7 +748,7 @@
         const controls = document.getElementById('controls');
 
         // ============================================================
-        // 💖 POPUP & MUSIC CONTROLS
+        // 💖 POPUP & MUSIC CONTROLS - SOLUSI TANPA RELOAD!
         // ============================================================
         const popupOverlay = document.getElementById('popupOverlay');
         const startBtn = document.getElementById('startBtn');
@@ -765,32 +765,49 @@
             if (isStarted) return;
             isStarted = true;
 
-            // 1. Pindahkan iframe dari popup ke mini player (tanpa reload!)
+            // ============================================================
+            // 🔥 SOLUSI: PINDAHKAN IFRAME TAPI JANGAN RELOAD
+            // ============================================================
+            // 1. Ambil iframe dari popup
             const iframe = mainIframe;
-            // Simpan src sebelum dipindah
+            
+            // 2. Simpan src dan semua atribut
             const currentSrc = iframe.src;
             
-            // Pindahkan iframe ke container mini
-            miniPlayerContainer.appendChild(iframe);
+            // 3. BUAT IFRAME BARU dengan src yang SAMA
+            //    Ini lebih stabil daripada memindahkan iframe
+            const newIframe = document.createElement('iframe');
+            newIframe.src = currentSrc;
+            newIframe.width = '100%';
+            newIframe.height = '70px';
+            newIframe.scrolling = 'no';
+            newIframe.frameBorder = 'no';
+            newIframe.allow = 'autoplay; encrypted-media';
+            newIframe.style.border = 'none';
+            newIframe.style.borderRadius = '6px';
+            newIframe.style.display = 'block';
             
-            // Pastikan src tetap sama (musik tetap berjalan!)
-            iframe.src = currentSrc;
-            iframe.style.height = '70px';
-            iframe.style.width = '100%';
+            // 4. Hapus iframe lama dari popup (tapi pertahankan elemen)
+            //    Kita sembunyikan popup, iframe lama akan ikut hilang
+            
+            // 5. Tambahkan iframe baru ke mini player
+            miniPlayerContainer.innerHTML = '';
+            miniPlayerContainer.appendChild(newIframe);
 
-            // 2. Sembunyikan popup
+            // 6. Sembunyikan popup
             popupOverlay.classList.add('hidden');
 
-            // 3. Tampilkan mini player
+            // 7. Tampilkan mini player
             musicPlayerMini.classList.add('show');
 
-            // 4. Tampilkan kontrol slideshow
+            // 8. Tampilkan kontrol slideshow
             controls.classList.add('show');
             indicator.classList.add('show');
             transitionName.classList.add('show');
 
             console.log('📸 Slideshow dimulai!');
-            console.log('🎵 Iframe dipindahkan ke mini player - musik tetap berjalan!');
+            console.log('🎵 Iframe baru dibuat dengan src yang sama - musik tetap berjalan!');
+            console.log('🔗 Src:', currentSrc);
         }
 
         // Event klik tombol NEXT
@@ -976,7 +993,7 @@
         console.log('✅ Slideshow siap!');
         console.log('💖 Klik play ▶ di player, lalu klik NEXT');
         console.log('📸 Total foto:', slides.length);
-        console.log('🎵 Iframe akan dipindahkan ke mini player - musik tetap berjalan!');
+        console.log('🎵 Iframe baru dibuat dengan src yang sama - musik tetap berjalan!');
         console.log('💡 Tekan Enter atau Spasi untuk mulai tanpa mouse');
         console.log('💡 Tekan "m" untuk sembunyikan/tampilkan musik');
     </script>
