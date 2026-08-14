@@ -148,7 +148,7 @@
             width: 100%;
             height: 100%;
             z-index: 9999;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             display: flex;
@@ -172,8 +172,8 @@
         .popup-card {
             background: linear-gradient(145deg, #1a1a3e, #2d2b55);
             border-radius: 30px;
-            padding: 50px 40px 40px;
-            max-width: 380px;
+            padding: 40px 30px 35px;
+            max-width: 400px;
             width: 90%;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -187,9 +187,9 @@
         }
 
         .popup-card .heart-icon {
-            font-size: 60px;
+            font-size: 55px;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             animation: heartbeat 1.5s ease-in-out infinite;
         }
 
@@ -203,9 +203,9 @@
 
         .popup-card h1 {
             color: white;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             letter-spacing: 2px;
             background: linear-gradient(45deg, #ff6b9d, #ff2d55);
             -webkit-background-clip: text;
@@ -214,20 +214,36 @@
         }
 
         .popup-card .subtitle {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 13px;
-            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 12px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+        }
+
+        .popup-card .instruction {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .popup-card .instruction .highlight {
+            color: #ff6b9d;
+            font-weight: 600;
         }
 
         .popup-card .btn-next {
             background: linear-gradient(135deg, #ff2d55, #ff6b9d);
             color: white;
             border: none;
-            padding: 16px 50px;
+            padding: 14px 40px;
             border-radius: 50px;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -256,22 +272,22 @@
         }
 
         /* ============================================ */
-        /* 🎵 SOUNDCLOUD PLAYER - HIDDEN (di-background) */
+        /* 🎵 SOUNDCLOUD PLAYER - DI POJOK KANAN BAWAH */
         /* ============================================ */
         .music-player {
             position: fixed;
             bottom: 95px;
             right: 15px;
             z-index: 100;
-            width: 180px;
-            max-width: 60vw;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 10px;
-            padding: 4px 6px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 200px;
+            max-width: 65vw;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 6px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
             transition: all 0.5s ease;
             opacity: 0;
             transform: translateY(20px);
@@ -286,9 +302,9 @@
 
         .music-player iframe {
             width: 100%;
-            height: 80px;
+            height: 100px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             display: block;
         }
 
@@ -296,9 +312,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
             color: rgba(255, 255, 255, 0.3);
-            font-size: 7px;
+            font-size: 8px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-weight: 600;
@@ -314,7 +330,7 @@
             border: none;
             color: rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            font-size: 10px;
+            font-size: 11px;
             padding: 0 3px;
             transition: color 0.3s ease;
         }
@@ -470,25 +486,29 @@
         /* RESPONSIVE */
         @media (max-width: 600px) {
             .popup-card {
-                padding: 35px 25px 30px;
+                padding: 30px 20px 25px;
             }
             .popup-card .heart-icon {
-                font-size: 45px;
+                font-size: 40px;
             }
             .popup-card h1 {
-                font-size: 26px;
+                font-size: 24px;
+            }
+            .popup-card .instruction {
+                font-size: 12px;
+                padding: 10px 12px;
             }
             .popup-card .btn-next {
-                padding: 14px 30px;
-                font-size: 16px;
+                padding: 12px 25px;
+                font-size: 15px;
             }
             .music-player {
                 bottom: 90px;
                 right: 10px;
-                width: 140px;
+                width: 160px;
             }
             .music-player iframe {
-                height: 70px;
+                height: 80px;
             }
             .controls {
                 bottom: 25px;
@@ -516,25 +536,29 @@
 
         @media (max-width: 400px) {
             .popup-card {
-                padding: 25px 18px 22px;
+                padding: 22px 15px 18px;
             }
             .popup-card .heart-icon {
-                font-size: 35px;
+                font-size: 32px;
             }
             .popup-card h1 {
-                font-size: 22px;
+                font-size: 20px;
+            }
+            .popup-card .instruction {
+                font-size: 11px;
+                padding: 8px 10px;
             }
             .popup-card .btn-next {
-                padding: 12px 20px;
-                font-size: 14px;
+                padding: 10px 20px;
+                font-size: 13px;
             }
             .music-player {
                 bottom: 85px;
                 right: 8px;
-                width: 120px;
+                width: 130px;
             }
             .music-player iframe {
-                height: 60px;
+                height: 65px;
             }
             .controls {
                 bottom: 20px;
@@ -567,7 +591,10 @@
         <div class="popup-card">
             <span class="heart-icon">💖</span>
             <h1>My Mine</h1>
-            <p class="subtitle">✨ Klik Next untuk mulai ✨</p>
+            <p class="subtitle">✨ Klik NEXT untuk mulai ✨</p>
+            <div class="instruction">
+                ⚡ <span class="highlight">Klik NEXT</span> lalu <span class="highlight">klik tombol play ▶</span> di player musik yang muncul
+            </div>
             <button class="btn-next" id="startBtn">
                 NEXT <span class="arrow">→</span>
             </button>
@@ -575,7 +602,7 @@
     </div>
 
     <!-- ============================================ -->
-    <!-- 🎵 SOUNDCLOUD PLAYER - HIDDEN SAMPAI DIKLIK -->
+    <!-- 🎵 SOUNDCLOUD PLAYER -->
     <!-- ============================================ -->
     <div class="music-player" id="musicPlayer">
         <div class="player-label">
@@ -585,11 +612,11 @@
         <iframe 
             id="soundcloudIframe"
             width="100%" 
-            height="80" 
+            height="100" 
             scrolling="no" 
             frameborder="no" 
             allow="autoplay; encrypted-media" 
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2352937985&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2352937985&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
         </iframe>
     </div>
 
@@ -707,7 +734,7 @@
         let isMusicVisible = true;
         let isStarted = false;
 
-        // Fungsi untuk memulai semua
+        // Fungsi untuk memulai slideshow & tampilkan player
         function startEverything() {
             if (isStarted) return;
             isStarted = true;
@@ -723,14 +750,14 @@
             indicator.classList.add('show');
             transitionName.classList.add('show');
 
-            // 4. Force play SoundCloud dengan reload
+            // 4. Set auto_play=true di iframe (tapi di HP tetap butuh klik manual)
             const src = soundcloudIframe.src;
-            soundcloudIframe.src = src;
+            if (!src.includes('auto_play=true')) {
+                soundcloudIframe.src = src + '&auto_play=true';
+            }
 
-            console.log('🎵 Musik diputar!');
             console.log('📸 Slideshow dimulai!');
-
-            // 5. Mulai auto play slideshow (sudah berjalan dari awal)
+            console.log('🎵 Player musik muncul! Klik tombol play ▶ di player untuk mendengarkan.');
         }
 
         // Event klik tombol NEXT
@@ -918,12 +945,12 @@
             }
         });
 
-        // Mulai auto play (tapi slideshow belum jalan sampai user klik NEXT)
         startAutoPlay();
 
         console.log('✅ Slideshow siap! Tunggu klik "NEXT" untuk mulai.');
         console.log('📸 Total foto:', slides.length);
-        console.log('💖 Klik "NEXT" untuk memutar musik dan memulai!');
+        console.log('💖 Klik "NEXT" lalu klik tombol play ▶ di player musik!');
+        console.log('📱 Di HP: Klik tombol play ▶ di player untuk memutar lagu.');
         console.log('💡 Tekan Enter atau Spasi untuk mulai tanpa mouse');
         console.log('💡 Tekan "m" untuk sembunyikan/tampilkan musik');
     </script>
