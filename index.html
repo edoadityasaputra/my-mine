@@ -139,30 +139,30 @@
         @keyframes rippleOut { 0% { transform: scale(1); opacity: 1; filter: brightness(1); } 50% { transform: scale(1.2); opacity: 0.5; filter: brightness(1.5); } 100% { transform: scale(1.5); opacity: 0; filter: brightness(2); } }
 
         /* ============================================ */
-        /* 🎵 SOUNDCLOUD PLAYER - MINI DI POJOK KANAN ATAS */
+        /* 🎵 SOUNDCLOUD PLAYER - MINI DI POJOK KANAN BAWAH */
         /* ============================================ */
         .music-player {
             position: fixed;
-            top: 70px;
+            bottom: 95px;
             right: 15px;
             z-index: 100;
-            width: 280px;
-            max-width: 85vw;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 16px;
-            padding: 10px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            width: 200px;
+            max-width: 70vw;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 6px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
             transition: all 0.3s ease;
         }
 
         .music-player iframe {
             width: 100%;
-            height: 166px;
+            height: 100px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             display: block;
         }
 
@@ -170,30 +170,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 6px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 10px;
-            letter-spacing: 1px;
+            margin-bottom: 4px;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 8px;
+            letter-spacing: 0.5px;
             text-transform: uppercase;
             font-weight: 600;
+            padding: 0 2px;
         }
 
         .music-player .player-label span {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .music-player .toggle-btn {
             background: none;
             border: none;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
             cursor: pointer;
-            font-size: 14px;
-            padding: 0 5px;
+            font-size: 11px;
+            padding: 0 3px;
             transition: color 0.3s ease;
         }
 
         .music-player .toggle-btn:hover {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .music-player.hidden {
+            transform: translateX(120%);
+            opacity: 0;
+            pointer-events: none;
         }
 
         /* ============================================ */
@@ -287,7 +294,7 @@
             color: white;
             font-size: 11px;
             font-weight: 500;
-            z-index: 100;
+            z-index: 50;
             background: rgba(0, 0, 0, 0.5);
             padding: 4px 16px;
             border-radius: 20px;
@@ -320,13 +327,13 @@
         /* RESPONSIVE */
         @media (max-width: 600px) {
             .music-player {
-                top: 60px;
+                bottom: 90px;
                 right: 10px;
-                width: 220px;
-                padding: 8px 10px;
+                width: 160px;
+                padding: 4px 6px;
             }
             .music-player iframe {
-                height: 140px;
+                height: 80px;
             }
             .controls {
                 bottom: 25px;
@@ -354,13 +361,13 @@
 
         @media (max-width: 400px) {
             .music-player {
-                top: 55px;
+                bottom: 85px;
                 right: 8px;
-                width: 180px;
-                padding: 6px 8px;
+                width: 140px;
+                padding: 4px 5px;
             }
             .music-player iframe {
-                height: 120px;
+                height: 70px;
             }
             .controls {
                 bottom: 20px;
@@ -387,21 +394,21 @@
     <div class="transition-name" id="transitionName">Fade</div>
 
     <!-- ============================================ -->
-    <!-- 🎵 SOUNDCLOUD PLAYER - POJOK KANAN ATAS -->
+    <!-- 🎵 SOUNDCLOUD PLAYER - POJOK KANAN BAWAH -->
     <!-- ============================================ -->
     <div class="music-player" id="musicPlayer">
         <div class="player-label">
-            <span>🎵 Now Playing</span>
+            <span>🎵</span>
             <button class="toggle-btn" id="toggleMusicBtn">−</button>
         </div>
         <iframe 
             id="soundcloudIframe"
             width="100%" 
-            height="166" 
+            height="100" 
             scrolling="no" 
             frameborder="no" 
             allow="autoplay; encrypted-media" 
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2352937985&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false">
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2352937985&color=%23ff5500&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
         </iframe>
     </div>
 
@@ -518,15 +525,37 @@
         toggleMusicBtn.addEventListener('click', () => {
             isMusicVisible = !isMusicVisible;
             if (isMusicVisible) {
-                musicPlayer.style.transform = 'translateX(0)';
-                musicPlayer.style.opacity = '1';
+                musicPlayer.classList.remove('hidden');
                 toggleMusicBtn.textContent = '−';
             } else {
-                musicPlayer.style.transform = 'translateX(120%)';
-                musicPlayer.style.opacity = '0';
+                musicPlayer.classList.add('hidden');
                 toggleMusicBtn.textContent = '+';
             }
         });
+
+        // ============================================================
+        // ⭐ FORCE AUTO PLAY SOUNDCLOUD (Refresh iframe)
+        // ============================================================
+        function forceSoundCloudPlay() {
+            // Reload iframe untuk memaksa auto play
+            const src = soundcloudIframe.src;
+            soundcloudIframe.src = src;
+            console.log('🎵 SoundCloud auto play dipaksa!');
+        }
+
+        // Jalankan setelah 1 detik
+        setTimeout(forceSoundCloudPlay, 1000);
+
+        // Juga saat user klik di layar (karena browser sering blokir auto play)
+        document.addEventListener('click', () => {
+            if (isMusicVisible) {
+                // Coba refresh iframe sekali lagi
+                const src = soundcloudIframe.src;
+                if (!src.includes('auto_play=true')) {
+                    soundcloudIframe.src = src + '&auto_play=true';
+                }
+            }
+        }, { once: true });
 
         function updateIndicator() {
             indicator.textContent = `${currentIndex + 1} / ${slides.length}`;
@@ -649,7 +678,7 @@
         });
 
         // ============================================================
-        // ⭐ AUTO PLAY LANGSUNG JALAN SAAT WEBSITE DIBUKA
+        // ⭐ AUTO PLAY SLIDESHOW LANGSUNG JALAN SAAT WEBSITE DIBUKA
         // ============================================================
         function startAutoPlay() {
             autoBtn.textContent = '⏸';
@@ -676,7 +705,7 @@
 
         console.log('✅ Slideshow siap! Auto Play aktif!');
         console.log('📸 Total foto:', slides.length);
-        console.log('🎵 SoundCloud player siap!');
+        console.log('🎵 SoundCloud player di pojok kanan bawah!');
         console.log('💡 Tekan "m" untuk sembunyikan/tampilkan musik');
     </script>
 </body>
