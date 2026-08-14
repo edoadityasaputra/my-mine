@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mine <3</title>
+    <title>My Mine ❤️</title>
     <style>
         * {
             margin: 0;
@@ -139,30 +139,156 @@
         @keyframes rippleOut { 0% { transform: scale(1); opacity: 1; filter: brightness(1); } 50% { transform: scale(1.2); opacity: 0.5; filter: brightness(1.5); } 100% { transform: scale(1.5); opacity: 0; filter: brightness(2); } }
 
         /* ============================================ */
-        /* 🎵 SOUNDCLOUD PLAYER - MINI DI POJOK KANAN BAWAH */
+        /* 💖 POPUP NOTIFIKASI "MY MINE" */
+        /* ============================================ */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInPopup 0.5s ease;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .popup-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        @keyframes fadeInPopup {
+            0% { opacity: 0; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .popup-card {
+            background: linear-gradient(145deg, #1a1a3e, #2d2b55);
+            border-radius: 30px;
+            padding: 50px 40px 40px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 30px 80px rgba(255, 50, 100, 0.2); }
+            50% { box-shadow: 0 30px 80px rgba(255, 50, 100, 0.5); }
+        }
+
+        .popup-card .heart-icon {
+            font-size: 60px;
+            display: block;
+            margin-bottom: 10px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.2); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.15); }
+            56% { transform: scale(1); }
+        }
+
+        .popup-card h1 {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #ff6b9d, #ff2d55);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .popup-card .subtitle {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .popup-card .btn-next {
+            background: linear-gradient(135deg, #ff2d55, #ff6b9d);
+            color: white;
+            border: none;
+            padding: 16px 50px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(255, 45, 85, 0.3);
+            width: 100%;
+        }
+
+        .popup-card .btn-next:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 45, 85, 0.5);
+        }
+
+        .popup-card .btn-next:active {
+            transform: scale(0.95);
+        }
+
+        .popup-card .btn-next .arrow {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            margin-left: 8px;
+        }
+
+        .popup-card .btn-next:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* ============================================ */
+        /* 🎵 SOUNDCLOUD PLAYER - HIDDEN (di-background) */
         /* ============================================ */
         .music-player {
             position: fixed;
             bottom: 95px;
             right: 15px;
             z-index: 100;
-            width: 200px;
-            max-width: 70vw;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 6px 8px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-            transition: all 0.3s ease;
+            width: 180px;
+            max-width: 60vw;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 10px;
+            padding: 4px 6px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .music-player.show {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
         }
 
         .music-player iframe {
             width: 100%;
-            height: 100px;
+            height: 80px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             display: block;
         }
 
@@ -170,9 +296,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 4px;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 8px;
+            margin-bottom: 3px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 7px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             font-weight: 600;
@@ -180,26 +306,26 @@
         }
 
         .music-player .player-label span {
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
 
         .music-player .toggle-btn {
             background: none;
             border: none;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.3);
             cursor: pointer;
-            font-size: 11px;
+            font-size: 10px;
             padding: 0 3px;
             transition: color 0.3s ease;
         }
 
         .music-player .toggle-btn:hover {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .music-player.hidden {
-            transform: translateX(120%);
             opacity: 0;
+            transform: translateX(120%);
             pointer-events: none;
         }
 
@@ -217,6 +343,12 @@
             z-index: 100;
             padding: 0 20px;
             pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .controls.show {
+            opacity: 1;
         }
 
         .controls .btn {
@@ -284,6 +416,12 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             letter-spacing: 0.5px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .indicator.show {
+            opacity: 1;
         }
 
         .transition-name {
@@ -302,8 +440,13 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             letter-spacing: 1px;
             text-transform: uppercase;
-            opacity: 0.6;
+            opacity: 0;
+            transition: opacity 1s ease;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .transition-name.show {
+            opacity: 0.6;
         }
 
         /* LOADING */
@@ -326,14 +469,26 @@
 
         /* RESPONSIVE */
         @media (max-width: 600px) {
+            .popup-card {
+                padding: 35px 25px 30px;
+            }
+            .popup-card .heart-icon {
+                font-size: 45px;
+            }
+            .popup-card h1 {
+                font-size: 26px;
+            }
+            .popup-card .btn-next {
+                padding: 14px 30px;
+                font-size: 16px;
+            }
             .music-player {
                 bottom: 90px;
                 right: 10px;
-                width: 160px;
-                padding: 4px 6px;
+                width: 140px;
             }
             .music-player iframe {
-                height: 80px;
+                height: 70px;
             }
             .controls {
                 bottom: 25px;
@@ -360,14 +515,26 @@
         }
 
         @media (max-width: 400px) {
+            .popup-card {
+                padding: 25px 18px 22px;
+            }
+            .popup-card .heart-icon {
+                font-size: 35px;
+            }
+            .popup-card h1 {
+                font-size: 22px;
+            }
+            .popup-card .btn-next {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
             .music-player {
                 bottom: 85px;
                 right: 8px;
-                width: 140px;
-                padding: 4px 5px;
+                width: 120px;
             }
             .music-player iframe {
-                height: 70px;
+                height: 60px;
             }
             .controls {
                 bottom: 20px;
@@ -394,7 +561,21 @@
     <div class="transition-name" id="transitionName">Fade</div>
 
     <!-- ============================================ -->
-    <!-- 🎵 SOUNDCLOUD PLAYER - POJOK KANAN BAWAH -->
+    <!-- 💖 POPUP NOTIFIKASI "MY MINE" -->
+    <!-- ============================================ -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-card">
+            <span class="heart-icon">💖</span>
+            <h1>My Mine</h1>
+            <p class="subtitle">✨ Klik Next untuk mulai ✨</p>
+            <button class="btn-next" id="startBtn">
+                NEXT <span class="arrow">→</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- 🎵 SOUNDCLOUD PLAYER - HIDDEN SAMPAI DIKLIK -->
     <!-- ============================================ -->
     <div class="music-player" id="musicPlayer">
         <div class="player-label">
@@ -404,7 +585,7 @@
         <iframe 
             id="soundcloudIframe"
             width="100%" 
-            height="100" 
+            height="80" 
             scrolling="no" 
             frameborder="no" 
             allow="autoplay; encrypted-media" 
@@ -413,7 +594,7 @@
     </div>
 
     <!-- KONTROL BAWAH -->
-    <div class="controls">
+    <div class="controls" id="controls">
         <button class="btn btn-prev" id="prevBtn">◀</button>
         <button class="btn btn-auto" id="autoBtn">⏸</button>
         <button class="btn btn-next" id="nextBtn">▶</button>
@@ -513,15 +694,58 @@
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
         const autoBtn = document.getElementById('autoBtn');
+        const controls = document.getElementById('controls');
 
         // ============================================================
-        // 🎵 MUSIC PLAYER CONTROLS
+        // 💖 POPUP & MUSIC CONTROLS
         // ============================================================
+        const popupOverlay = document.getElementById('popupOverlay');
+        const startBtn = document.getElementById('startBtn');
         const musicPlayer = document.getElementById('musicPlayer');
         const soundcloudIframe = document.getElementById('soundcloudIframe');
         const toggleMusicBtn = document.getElementById('toggleMusicBtn');
         let isMusicVisible = true;
+        let isStarted = false;
 
+        // Fungsi untuk memulai semua
+        function startEverything() {
+            if (isStarted) return;
+            isStarted = true;
+
+            // 1. Sembunyikan popup
+            popupOverlay.classList.add('hidden');
+
+            // 2. Tampilkan player musik
+            musicPlayer.classList.add('show');
+
+            // 3. Tampilkan kontrol
+            controls.classList.add('show');
+            indicator.classList.add('show');
+            transitionName.classList.add('show');
+
+            // 4. Force play SoundCloud dengan reload
+            const src = soundcloudIframe.src;
+            soundcloudIframe.src = src;
+
+            console.log('🎵 Musik diputar!');
+            console.log('📸 Slideshow dimulai!');
+
+            // 5. Mulai auto play slideshow (sudah berjalan dari awal)
+        }
+
+        // Event klik tombol NEXT
+        startBtn.addEventListener('click', startEverything);
+
+        // Juga bisa klik di area popup (kecuali tombol)
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) {
+                startEverything();
+            }
+        });
+
+        // ============================================================
+        // 🎵 MUSIC PLAYER TOGGLE (sembunyikan/tampilkan)
+        // ============================================================
         toggleMusicBtn.addEventListener('click', () => {
             isMusicVisible = !isMusicVisible;
             if (isMusicVisible) {
@@ -534,29 +758,8 @@
         });
 
         // ============================================================
-        // ⭐ FORCE AUTO PLAY SOUNDCLOUD (Refresh iframe)
+        // 📸 SLIDESHOW FUNCTIONS
         // ============================================================
-        function forceSoundCloudPlay() {
-            // Reload iframe untuk memaksa auto play
-            const src = soundcloudIframe.src;
-            soundcloudIframe.src = src;
-            console.log('🎵 SoundCloud auto play dipaksa!');
-        }
-
-        // Jalankan setelah 1 detik
-        setTimeout(forceSoundCloudPlay, 1000);
-
-        // Juga saat user klik di layar (karena browser sering blokir auto play)
-        document.addEventListener('click', () => {
-            if (isMusicVisible) {
-                // Coba refresh iframe sekali lagi
-                const src = soundcloudIframe.src;
-                if (!src.includes('auto_play=true')) {
-                    soundcloudIframe.src = src + '&auto_play=true';
-                }
-            }
-        }, { once: true });
-
         function updateIndicator() {
             indicator.textContent = `${currentIndex + 1} / ${slides.length}`;
             transitionName.textContent = transitionNames[currentIndex];
@@ -626,21 +829,35 @@
             }
         }
 
-        // EVENT LISTENERS
+        // ============================================================
+        // 🎮 EVENT LISTENERS
+        // ============================================================
         prevBtn.addEventListener('click', () => {
+            if (!isStarted) return;
             if (isAutoPlay) toggleAutoPlay();
             prevSlide();
         });
 
         nextBtn.addEventListener('click', () => {
+            if (!isStarted) return;
             if (isAutoPlay) toggleAutoPlay();
             nextSlide();
         });
 
-        autoBtn.addEventListener('click', toggleAutoPlay);
+        autoBtn.addEventListener('click', () => {
+            if (!isStarted) return;
+            toggleAutoPlay();
+        });
 
         // KEYBOARD
         document.addEventListener('keydown', (e) => {
+            if (!isStarted) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    startEverything();
+                }
+                return;
+            }
             if (e.key === 'ArrowRight') {
                 if (isAutoPlay) toggleAutoPlay();
                 nextSlide();
@@ -664,6 +881,7 @@
         });
 
         document.addEventListener('touchend', (e) => {
+            if (!isStarted) return;
             touchEndX = e.changedTouches[0].screenX;
             const diff = touchStartX - touchEndX;
             if (Math.abs(diff) > 50) {
@@ -678,14 +896,13 @@
         });
 
         // ============================================================
-        // ⭐ AUTO PLAY SLIDESHOW LANGSUNG JALAN SAAT WEBSITE DIBUKA
+        // ⭐ AUTO PLAY SLIDESHOW (berjalan di background)
         // ============================================================
         function startAutoPlay() {
             autoBtn.textContent = '⏸';
             autoBtn.classList.remove('paused');
             autoPlayInterval = setInterval(nextSlide, 3000);
             isAutoPlay = true;
-            console.log('▶ Auto Play dimulai! (3 detik)');
         }
 
         // INIT
@@ -701,11 +918,13 @@
             }
         });
 
+        // Mulai auto play (tapi slideshow belum jalan sampai user klik NEXT)
         startAutoPlay();
 
-        console.log('✅ Slideshow siap! Auto Play aktif!');
+        console.log('✅ Slideshow siap! Tunggu klik "NEXT" untuk mulai.');
         console.log('📸 Total foto:', slides.length);
-        console.log('🎵 SoundCloud player di pojok kanan bawah!');
+        console.log('💖 Klik "NEXT" untuk memutar musik dan memulai!');
+        console.log('💡 Tekan Enter atau Spasi untuk mulai tanpa mouse');
         console.log('💡 Tekan "m" untuk sembunyikan/tampilkan musik');
     </script>
 </body>
