@@ -291,80 +291,6 @@
         }
 
         /* ============================================ */
-        /* 🎵 SOUNDCLOUD PLAYER - MINI DI POJOK KANAN BAWAH */
-        /* ============================================ */
-        .music-player-mini {
-            position: fixed;
-            bottom: 95px;
-            right: 15px;
-            z-index: 100;
-            width: 160px;
-            max-width: 55vw;
-            background: rgba(0, 0, 0, 0.35);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 10px;
-            padding: 4px 6px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            pointer-events: none;
-        }
-
-        .music-player-mini.show {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .music-player-mini iframe {
-            width: 100%;
-            height: 70px;
-            border: none;
-            border-radius: 6px;
-            display: block;
-        }
-
-        .music-player-mini .player-label {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2px;
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 7px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            font-weight: 600;
-            padding: 0 2px;
-        }
-
-        .music-player-mini .player-label span {
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .music-player-mini .toggle-btn {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            font-size: 10px;
-            padding: 0 3px;
-            transition: color 0.3s ease;
-        }
-
-        .music-player-mini .toggle-btn:hover {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .music-player-mini.hidden {
-            opacity: 0;
-            transform: translateX(120%);
-            pointer-events: none;
-        }
-
-        /* ============================================ */
         /* 🎮 KONTROL SLIDESHOW DI POJOK BAWAH */
         /* ============================================ */
         .controls {
@@ -520,14 +446,6 @@
                 padding: 12px 25px;
                 font-size: 15px;
             }
-            .music-player-mini {
-                bottom: 90px;
-                right: 10px;
-                width: 130px;
-            }
-            .music-player-mini iframe {
-                height: 60px;
-            }
             .controls {
                 bottom: 25px;
                 gap: 20px;
@@ -568,14 +486,6 @@
             .popup-card .btn-next {
                 padding: 10px 18px;
                 font-size: 13px;
-            }
-            .music-player-mini {
-                bottom: 85px;
-                right: 8px;
-                width: 110px;
-            }
-            .music-player-mini iframe {
-                height: 50px;
             }
             .controls {
                 bottom: 20px;
@@ -631,17 +541,6 @@
                 NEXT <span class="arrow">→</span>
             </button>
         </div>
-    </div>
-
-    <!-- ============================================ -->
-    <!-- 🎵 SOUNDCLOUD PLAYER - MINI DI POJOK KANAN BAWAH (iframe yang SAMA) -->
-    <!-- ============================================ -->
-    <div class="music-player-mini" id="musicPlayerMini">
-        <div class="player-label">
-            <span>🎵</span>
-            <button class="toggle-btn" id="toggleMusicBtn">−</button>
-        </div>
-        <div id="miniPlayerContainer"></div>
     </div>
 
     <!-- KONTROL BAWAH -->
@@ -748,84 +647,32 @@
         const controls = document.getElementById('controls');
 
         // ============================================================
-        // 💖 POPUP & MUSIC CONTROLS - SOLUSI TANPA RELOAD!
+        // 💖 POPUP CONTROLS - TANPA MINI PLAYER!
         // ============================================================
         const popupOverlay = document.getElementById('popupOverlay');
         const startBtn = document.getElementById('startBtn');
         const mainIframe = document.getElementById('mainIframe');
-        const popupPlayer = document.getElementById('popupPlayer');
-        const miniPlayerContainer = document.getElementById('miniPlayerContainer');
-        const musicPlayerMini = document.getElementById('musicPlayerMini');
-        const toggleMusicBtn = document.getElementById('toggleMusicBtn');
-        let isMusicVisible = true;
         let isStarted = false;
 
-        // Fungsi untuk memulai slideshow & PINDAHKAN iframe ke mini
+        // Fungsi untuk memulai slideshow
         function startEverything() {
             if (isStarted) return;
             isStarted = true;
 
-            // ============================================================
-            // 🔥 SOLUSI: PINDAHKAN IFRAME TAPI JANGAN RELOAD
-            // ============================================================
-            // 1. Ambil iframe dari popup
-            const iframe = mainIframe;
-            
-            // 2. Simpan src dan semua atribut
-            const currentSrc = iframe.src;
-            
-            // 3. BUAT IFRAME BARU dengan src yang SAMA
-            //    Ini lebih stabil daripada memindahkan iframe
-            const newIframe = document.createElement('iframe');
-            newIframe.src = currentSrc;
-            newIframe.width = '100%';
-            newIframe.height = '70px';
-            newIframe.scrolling = 'no';
-            newIframe.frameBorder = 'no';
-            newIframe.allow = 'autoplay; encrypted-media';
-            newIframe.style.border = 'none';
-            newIframe.style.borderRadius = '6px';
-            newIframe.style.display = 'block';
-            
-            // 4. Hapus iframe lama dari popup (tapi pertahankan elemen)
-            //    Kita sembunyikan popup, iframe lama akan ikut hilang
-            
-            // 5. Tambahkan iframe baru ke mini player
-            miniPlayerContainer.innerHTML = '';
-            miniPlayerContainer.appendChild(newIframe);
-
-            // 6. Sembunyikan popup
+            // 1. Sembunyikan popup (iframe tetap berjalan di background!)
             popupOverlay.classList.add('hidden');
 
-            // 7. Tampilkan mini player
-            musicPlayerMini.classList.add('show');
-
-            // 8. Tampilkan kontrol slideshow
+            // 2. Tampilkan kontrol slideshow
             controls.classList.add('show');
             indicator.classList.add('show');
             transitionName.classList.add('show');
 
             console.log('📸 Slideshow dimulai!');
-            console.log('🎵 Iframe baru dibuat dengan src yang sama - musik tetap berjalan!');
-            console.log('🔗 Src:', currentSrc);
+            console.log('🎵 Musik tetap berjalan di background!');
         }
 
         // Event klik tombol NEXT
         startBtn.addEventListener('click', startEverything);
-
-        // ============================================================
-        // 🎵 MUSIC PLAYER MINI TOGGLE (sembunyikan/tampilkan)
-        // ============================================================
-        toggleMusicBtn.addEventListener('click', () => {
-            isMusicVisible = !isMusicVisible;
-            if (isMusicVisible) {
-                musicPlayerMini.classList.remove('hidden');
-                toggleMusicBtn.textContent = '−';
-            } else {
-                musicPlayerMini.classList.add('hidden');
-                toggleMusicBtn.textContent = '+';
-            }
-        });
 
         // ============================================================
         // 📸 SLIDESHOW FUNCTIONS
@@ -937,8 +784,6 @@
             } else if (e.key === ' ') {
                 e.preventDefault();
                 toggleAutoPlay();
-            } else if (e.key === 'm' || e.key === 'M') {
-                toggleMusicBtn.click();
             }
         });
 
@@ -993,9 +838,8 @@
         console.log('✅ Slideshow siap!');
         console.log('💖 Klik play ▶ di player, lalu klik NEXT');
         console.log('📸 Total foto:', slides.length);
-        console.log('🎵 Iframe baru dibuat dengan src yang sama - musik tetap berjalan!');
+        console.log('🎵 Setelah klik NEXT, musik tetap berjalan di background!');
         console.log('💡 Tekan Enter atau Spasi untuk mulai tanpa mouse');
-        console.log('💡 Tekan "m" untuk sembunyikan/tampilkan musik');
     </script>
 </body>
 </html>
